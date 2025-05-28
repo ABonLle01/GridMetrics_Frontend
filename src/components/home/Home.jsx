@@ -27,7 +27,7 @@ function home() {
       fetchRaces();
     }, []);
   
-    if (loading) return <p>Cargando carreras...</p>;
+    if (loading) return <p className='text-center'>Cargando información...</p>;
 
     return (
         <>

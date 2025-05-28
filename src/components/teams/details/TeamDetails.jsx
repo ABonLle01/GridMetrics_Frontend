@@ -68,7 +68,7 @@ function TeamDetails() {
 
                             <div className="col-7">
                                 <p className='text-secondary'>{team.stats.world_championships}</p>
-                                <p className='text-secondary'>{new Date(team.stats.first_entry).toLocaleDateString()}</p>
+                                <p className='text-secondary'>{new Date(team.stats.first_entry).getFullYear()}</p>
                                 <p className='text-secondary'>{team.stats.highest_race_finish}</p>
                                 <p className='text-secondary'>{team.stats.pole_positions}</p>
                                 <p className='text-secondary'>{team.stats.fastest_laps}</p>

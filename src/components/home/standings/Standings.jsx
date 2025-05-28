@@ -208,7 +208,7 @@ function Standings() {
   )
 
   const getActiveContent = () => {
-    if (loading) return <p>Cargando...</p>
+    if (loading) return <p className='text-center'>Cargando...</p>
     if (error) return <p>{error}</p>
 
     switch (activeTab) {
@@ -251,7 +251,7 @@ function Standings() {
           {getActiveContent()}
         </div>
 
-        <button type="button" className="btn btn-outline-secondary">Ver más información</button>
+        {/* <button type="button" className="btn btn-outline-secondary">Ver más información</button> */}
       </div>
     </div>
   )

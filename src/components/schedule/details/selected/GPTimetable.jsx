@@ -58,7 +58,7 @@ function GPTimetable({ race }) {
 
 
   if (!race || !race.sessions) {
-    return <div>Cargando...</div>;
+    return <div className='text-center'>Cargando...</div>;
   }
 
   return (
