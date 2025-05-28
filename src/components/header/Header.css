@@ -1,0 +1,36 @@
+body {
+    font-family: 'Russo One', sans-serif;
+}
+
+nav {
+    background-color: rgba(255, 0, 0, 0.85);
+    font-family: 'Russo One', sans-serif;
+    color: rgba(255, 255, 255, 0.85);
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        img {
+            width: 80px;
+            height: auto;
+        }
+
+        span {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+        }
+
+        li{
+            padding: 1rem;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.25);
+                border-radius: 0.5rem;
+            }
+        }
+    }
+}
+
+  

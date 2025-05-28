@@ -1,0 +1,47 @@
+.m-negative{
+    margin-left: -4rem !important;
+}
+
+span{
+    font-size: 1.2rem !important;
+}
+
+/* Estilos para el pódium */
+.podium-1 {
+  border: 3px solid gold;
+  transform: scale(1.1);
+}
+
+.podium-2 {
+  border: 3px solid silver;
+}
+
+.podium-3 {
+  border: 3px solid #cd7f32;
+}
+
+.points-badge {
+  background: #333;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+/* Estilos por equipo */
+.team-red-bull-racing {
+  background-color: rgba(6, 0, 239, 0.1);
+}
+
+.team-ferrari {
+  background-color: rgba(237, 28, 36, 0.1);
+}
+
+.team-mercedes {
+  background-color: rgba(0, 210, 190, 0.1);
+}
+
+.country-flag {
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
