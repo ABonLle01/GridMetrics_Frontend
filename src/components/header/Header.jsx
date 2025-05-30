@@ -54,12 +54,12 @@ function Header() {
               Calendario
             </NavLink>
           </li>
-          {/* <li className="nav-item">
+          <li className="nav-item">
             <NavLink to="/compare" className={({ isActive }) => isActive ? "nav-link text-danger-emphasis" : "nav-link text-white"}>
               Comparar Pilotos
             </NavLink>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <NavLink to="/strats" className={({ isActive }) => isActive ? "nav-link text-danger-emphasis" : "nav-link text-white"}>
               Estrategias y Telemetría
             </NavLink>
