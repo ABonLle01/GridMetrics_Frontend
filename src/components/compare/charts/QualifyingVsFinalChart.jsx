@@ -1,3 +1,4 @@
+import { getTeamColorByTeamOption } from '../../../utils/selectOptions';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -11,25 +12,39 @@ import {
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Legend);
 
-export function QualifyingVsFinalChart({ driverResults, driverName }) {
-  const labels = driverResults.map(r => r.raceName);
+export function QualifyingVsFinalChart({ driver1Results, driver2Results, driver1, driver2 }) {
+  const labels = driver1Results.map(r => r.raceName);
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Posición Clasificación',
-        data: driverResults.map(r => r.qualifyingPosition ?? null),
-        borderColor: 'blue',
-        backgroundColor: 'rgba(0, 0, 255, 0.3)',
-        tension: 0,
+        label: `${driver1?.name.first} ${driver1?.name.last} - Clasificación`,
+        data: driver1Results.map(r => r.qualifyingPosition ?? null),
+        borderColor: 'purple',
+        backgroundColor: getTeamColorByTeamOption(driver1.team),
+        tension: 0.3,
       },
       {
-        label: 'Posición Final',
-        data: driverResults.map(r => r.finalPosition ?? null),
-        borderColor: 'green',
-        backgroundColor: 'rgba(0, 255, 0, 0.3)',
-        tension: 0,
+        label: `${driver1?.name.first} ${driver1?.name.last} - Final`,
+        data: driver1Results.map(r => r.finalPosition ?? null),
+        borderColor: 'violet',
+        backgroundColor: getTeamColorByTeamOption(driver1.team),
+        tension: 0.3,
+      },
+      {
+        label: `${driver2?.name.first} ${driver2?.name.last} - Clasificación`,
+        data: driver2Results.map(r => r.qualifyingPosition ?? null),
+        borderColor: 'dark',
+        backgroundColor: getTeamColorByTeamOption(driver2.team),
+        tension: 0.3,
+      },
+      {
+        label: `${driver2?.name.first} ${driver2?.name.last} - Final`,
+        data: driver2Results.map(r => r.finalPosition ?? null),
+        borderColor: 'gray',
+        backgroundColor: getTeamColorByTeamOption(driver2.team),
+        tension: 0.3,
       }
     ]
   };
@@ -59,8 +74,9 @@ export function QualifyingVsFinalChart({ driverResults, driverName }) {
 
   return (
     <div className="mb-5">
-      <h4 className="text-center mb-3">{driverName}</h4>
+      <h3 className="text-center mb-3">Clasificación vs Posición Final</h3>
       <Line data={data} options={options} />
     </div>
   );
 }
+

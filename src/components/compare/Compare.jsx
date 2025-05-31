@@ -133,41 +133,21 @@ function Compare() {
             driver2={driverData[1]}
           />
 
-          <div className="mt-5">
-            <h3 className="text-center mb-4">Comparativa: Clasificación vs Posición Final</h3>
-            <div className="row">
-              <div className="col-md-6">
-                <QualifyingVsFinalChart
-                  driverResults={driverResults[0]}
-                  driverName={`${driverData[0].name.first} ${driverData[0].name.last}`}
-                />
-              </div>
-              <div className="col-md-6">
-                <QualifyingVsFinalChart
-                  driverResults={driverResults[1]}
-                  driverName={`${driverData[1].name.first} ${driverData[1].name.last}`}
-                />
-              </div>
-            </div>
-          </div>
+          <QualifyingVsFinalChart
+            driver1Results={driverResults[0]}
+            driver2Results={driverResults[1]}
+            driver1={driverData[0]}
+            driver2={driverData[1]}
+          />
 
-          <div className="mt-5">
-            <h3 className="text-center">Posiciones Finales</h3>
-            <div className="row">
-                <div className="col-md-6">
-                <FinalPositionsChart
-                    driverResults={driverResults[0]}
-                    driverName={`${driverData[0].name.first} ${driverData[0].name.last}`}
-                />
-                </div>
-                <div className="col-md-6">
-                <FinalPositionsChart
-                    driverResults={driverResults[1]}
-                    driverName={`${driverData[1].name.first} ${driverData[1].name.last}`}
-                />
-                </div>
-            </div>
-        </div>
+
+          <FinalPositionsChart
+            driver1Results={driverResults[0]}
+            driver2Results={driverResults[1]}
+            driver1={driverData[0]}
+            driver2={driverData[1]}
+            
+          />
         </>
       )}
 

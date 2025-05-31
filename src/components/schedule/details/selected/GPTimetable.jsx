@@ -137,7 +137,7 @@ function GPTimetable({ race }) {
             </tbody>
           </table>
 
-          <span className='fs-6 text-primary'>* Los resultados de cada sesión estarán 2 horas después de cada sesión</span>
+          <span className='fs-6 text-primary'>* Los resultados de cada sesión estarán 2 horas después de la carrera</span>
         </div>
       )}
     </>
