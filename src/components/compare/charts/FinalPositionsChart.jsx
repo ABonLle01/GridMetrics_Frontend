@@ -74,7 +74,7 @@ export function FinalPositionsChart({ driver1Results, driver2Results, driver1, d
 
   return (
     <div className="mb-5">
-      <h3 className="text-center mb-3">Posiciones Finales en carrera</h3>
+      <h3 className="text-center mb-3">Posiciones Finales en cada GP</h3>
       <Line data={data} options={options} />
     </div>
   );

@@ -74,7 +74,7 @@ export function QualifyingVsFinalChart({ driver1Results, driver2Results, driver1
 
   return (
     <div className="mb-5">
-      <h3 className="text-center mb-3">Clasificación vs Posición Final</h3>
+      <h3 className="text-center mb-3">Posición Clasificación vs Posición Final</h3>
       <Line data={data} options={options} />
     </div>
   );

@@ -14,6 +14,12 @@ function Compare() {
   const [driverData, setDriverData] = useState([null, null]);
   const [driverResults, setDriverResults] = useState([[], []]);
 
+  const [showComparisonChart, setShowComparisonChart] = useState(true);
+  const [showAccumulatedPointsChart, setShowAccumulatedPointsChart] = useState(true);
+  const [showQualifyingVsFinalChart, setShowQualifyingVsFinalChart] = useState(true);
+  const [showFinalPositionsChart, setShowFinalPositionsChart] = useState(true);
+
+
   useEffect(() => {
     fetch(`${url}api/drivers`)
       .then(res => res.json())
@@ -27,7 +33,23 @@ function Compare() {
         fetch(`${url}api/drivers/id/${id1}`).then(res => res.json()),
         fetch(`${url}api/drivers/id/${id2}`).then(res => res.json())
       ]).then(([data1, data2]) => {
-        setDriverData([data1, data2]);
+        const extendedData1 = {
+          ...data1,
+          stats: {
+            ...data1.stats,
+            average_points: data1.stats.total_points / data1.stats.gp_entered
+          }
+        };
+
+        const extendedData2 = {
+          ...data2,
+          stats: {
+            ...data2.stats,
+            average_points: data2.stats.total_points / data2.stats.gp_entered
+          }
+        };
+
+        setDriverData([extendedData1, extendedData2]);
 
         Promise.all([
           fetch(`${url}api/drivers/${id1}/results`).then(res => res.json()),
@@ -88,6 +110,8 @@ function Compare() {
               <li className="list-group-item d-flex justify-content-between"> <span className='fs-6'>GPs:</span> <span className={getComparisonClass(index, 'gp_entered')}>{data.stats.gp_entered}</span> </li> 
               <li className="list-group-item d-flex justify-content-between"> <span className='fs-6'>Títulos mundiales:</span> <span className={getComparisonClass(index, 'world_championships')}>{data.stats.world_championships}</span> </li> 
               <li className="list-group-item d-flex justify-content-between"> <span className='fs-6'>Puntos totales:</span> <span className={getComparisonClass(index, 'total_points')}>{data.stats.total_points}</span> </li>
+              <li className="list-group-item d-flex justify-content-between"> <span className='fs-6'>Puntos esta temporada:</span> <span className={getComparisonClass(index, 'season_points')}>{data.stats.season_points}</span> </li>
+              <li className="list-group-item d-flex justify-content-between"> <span className='fs-6'>Media de puntos por carrera:</span> <span className={getComparisonClass(index, 'average_points')}>{parseFloat((data.stats.total_points / data.stats.gp_entered).toFixed(3))}</span> </li>
             </ul>
           </div>
         </div>
@@ -122,34 +146,71 @@ function Compare() {
       </div>
 
 
+
       {driverResults[0] && driverResults[1] && driverData[0] && driverData[1] && (
         <>
-          <ComparisonChart driverData={driverData} />
+          <div className="mb-4 d-flex flex-wrap gap-2 justify-content-center">
+            <button
+              className={`btn ${showComparisonChart ? 'btn-primary' : 'btn-outline-primary'}`}
+              onClick={() => setShowComparisonChart(prev => !prev)}
+            >
+              {showComparisonChart ? 'Ocultar' : 'Mostrar'} comparación general
+            </button>
 
-          <AccumulatedPointsChart
-            driver1Results={driverResults[0]}
-            driver2Results={driverResults[1]}
-            driver1={driverData[0]}
-            driver2={driverData[1]}
-          />
+            <button
+              className={`btn ${showAccumulatedPointsChart ? 'btn-primary' : 'btn-outline-primary'}`}
+              onClick={() => setShowAccumulatedPointsChart(prev => !prev)}
+            >
+              {showAccumulatedPointsChart ? 'Ocultar' : 'Mostrar'} puntos acumulados
+            </button>
 
-          <QualifyingVsFinalChart
-            driver1Results={driverResults[0]}
-            driver2Results={driverResults[1]}
-            driver1={driverData[0]}
-            driver2={driverData[1]}
-          />
+            <button
+              className={`btn ${showQualifyingVsFinalChart ? 'btn-primary' : 'btn-outline-primary'}`}
+              onClick={() => setShowQualifyingVsFinalChart(prev => !prev)}
+            >
+              {showQualifyingVsFinalChart ? 'Ocultar' : 'Mostrar'} clasificación vs carrera
+            </button>
+
+            <button
+              className={`btn ${showFinalPositionsChart ? 'btn-primary' : 'btn-outline-primary'}`}
+              onClick={() => setShowFinalPositionsChart(prev => !prev)}
+            >
+              {showFinalPositionsChart ? 'Ocultar' : 'Mostrar'} posiciones carrera
+            </button>
+          </div>
 
 
-          <FinalPositionsChart
-            driver1Results={driverResults[0]}
-            driver2Results={driverResults[1]}
-            driver1={driverData[0]}
-            driver2={driverData[1]}
-            
-          />
+          {showComparisonChart && <ComparisonChart driverData={driverData} />}
+
+          {showAccumulatedPointsChart && (
+            <AccumulatedPointsChart
+              driver1Results={driverResults[0]}
+              driver2Results={driverResults[1]}
+              driver1={driverData[0]}
+              driver2={driverData[1]}
+            />
+          )}
+
+          {showQualifyingVsFinalChart && (
+            <QualifyingVsFinalChart
+              driver1Results={driverResults[0]}
+              driver2Results={driverResults[1]}
+              driver1={driverData[0]}
+              driver2={driverData[1]}
+            />
+          )}
+
+          {showFinalPositionsChart && (
+            <FinalPositionsChart
+              driver1Results={driverResults[0]}
+              driver2Results={driverResults[1]}
+              driver1={driverData[0]}
+              driver2={driverData[1]}
+            />
+          )}
         </>
       )}
+
 
 
     </div>

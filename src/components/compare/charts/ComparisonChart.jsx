@@ -1,4 +1,5 @@
 import { getTeamColorByTeamOption } from '../../../utils/selectOptions';
+import Proportions from './others/Proportions';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -11,8 +12,8 @@ import {
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
-const statLabels = ['Podios', 'GPs', 'Títulos Mundiales', 'Puntos Totales'];
-const statKeys = ['podiums', 'gp_entered', 'world_championships', 'total_points'];
+const statLabels = ['Podios Totales', 'Grandes Premios Disputados', 'Puntos Totales', 'Puntos esta temporada'];
+const statKeys = ['podiums', 'gp_entered', 'total_points', 'season_points'];
 
 export const ComparisonChart = ({ driverData }) => {
   if (!driverData[0] || !driverData[1]) return null;
@@ -60,6 +61,7 @@ export const ComparisonChart = ({ driverData }) => {
           </div>
         ))}
       </div>
+      <Proportions driverData={driverData} />
     </div>
   );
 };
