@@ -50,58 +50,43 @@ function Standings() {
 
   const renderDriversStandings = () => (
     <>
-      <div className='d-flex flex-row justify-content-evenly w-100'>
+      <div className="d-flex flex-wrap justify-content-evenly w-100 gap-3">
         {podiumDrivers.map((driver, index) => (
-          <Link
-            key={generateKey('podium-driver', index)}
-            to={`/drivers/${driver._id}`}
-            className='text-decoration-none text-dark'
-            style={{ textDecoration: 'none' }}
-          >
-            <div className='d-flex flex-column gap-2 align-items-center'>
-              <img 
-                src={driver.profileImage} 
-                alt={driver.fullName} 
-                width={200}
-                className={`podium-${index + 1}`}
-              />
-              <div className='d-flex w-100 justify-content-between px-3'>
-                <span className='fw-bold'>{index + 1}.</span>
+          <Link key={generateKey('podium-driver', index)} to={`/drivers/${driver._id}`} className="text-decoration-none text-dark" style={{ textDecoration: 'none', minWidth: '180px' }} >
+            <div className="d-flex flex-column gap-2 align-items-center">
+              <img src={driver.profileImage} alt={driver.fullName} width={180} className={`podium-${index + 1}`} />
+              <div className="d-flex w-100 justify-content-between px-3">
+                <span className="fw-bold">{index + 1}.</span>
                 <span>{driver.fullName}</span>
               </div>
-              <div className='points-badge'>{driver.seasonPoints} pts</div>
+              <div className="points-badge">{driver.seasonPoints} pts</div>
             </div>
           </Link>
         ))}
       </div>
 
-      <div className='container w-100'>
+      <div className="container w-100 overflow-none">
         <table className="table table-hover w-100">
           <thead className="table-dark">
             <tr>
-              <th className='fw-light'>Pos</th>
-              <th className='fw-light'>Driver</th>
-              <th className='fw-light'>Team</th>
-              <th className='fw-light'>Points</th>
+              <th className="fw-light">Pos</th>
+              <th className="fw-light">Driver</th>
+              <th className="fw-light">Team</th>
+              <th className="fw-light">Points</th>
             </tr>
           </thead>
           <tbody>
             {tableDrivers.map((driver, index) => (
-              <tr 
-                key={generateKey('driver-row', index)} 
+              <tr
+                key={generateKey('driver-row', index)}
                 className={`team-${driver.teamName} table-row-clickable`}
                 onClick={() => navigate(`/drivers/${driver._id}`)}
                 style={{ cursor: 'pointer' }}
               >
                 <td>{index + 4}</td>
                 <td>
-                  <div className='d-flex align-items-center gap-2'>
-                    <img 
-                      src={driver.flagImage} 
-                      alt={driver.fullName} 
-                      width={20}
-                      className='country-flag'
-                    />
+                  <div className="d-flex align-items-center gap-2">
+                    <img src={driver.flagImage} alt={driver.fullName} width={20} className="country-flag" />
                     {driver.fullName}
                   </div>
                 </td>
@@ -113,99 +98,59 @@ function Standings() {
         </table>
       </div>
     </>
-  )
+  );
 
-  const renderTeamsStandings = () => (
-    <>
-      <div className='d-flex flex-row justify-content-evenly w-100'>
-        {podiumTeams.map((team, index) => (
-          <Link
-            key={generateKey('podium-team', index)}
-            to={`/teams/${team.id}`}
-            className='text-decoration-none text-dark d-flex flex-column gap-2 align-items-center'
-            style={{ textDecoration: 'none' }}
-          >
-            <img 
-              src={team.logo} 
-              alt={team.name} 
-              width={200}
-              className={`podium-${index + 1}`}
-            />
-            <div className='d-flex w-100 justify-content-between px-3'>
-              <span className='fw-bold'>{index + 1}.</span>
+const renderTeamsStandings = () => (
+  <>
+    <div className="d-flex flex-wrap justify-content-evenly w-100 gap-3">
+      {podiumTeams.map((team, index) => (
+        <Link key={generateKey('podium-team', index)} to={`/teams/${team.id}`} className="text-decoration-none text-dark" style={{ textDecoration: 'none', minWidth: '180px' }} >
+          <div className="d-flex flex-column gap-2 align-items-center">
+            <img src={team.logo} alt={team.name} width={180} className={`podium-${index + 1}`} />
+            <div className="d-flex w-100 justify-content-between px-3">
+              <span className="fw-bold">{index + 1}.</span>
               <span>{team.name}</span>
             </div>
-            <div className='points-badge'>{team.season_points} pts</div>
-          </Link>
-        ))}
-      </div>
-
-      <div className='container w-100'>
-        <table className="table table-hover w-100">
-          <thead className="table-dark">
-            <tr>
-              <th className='fw-light'>Pos</th>
-              <th className='fw-light'>Team</th>
-              <th className='fw-light'>Drivers</th>
-              <th className='fw-light'>Points</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableTeams.map((team, index) => (
-              <tr 
-                key={generateKey('team-row', index)}
-                onClick={() => navigate(`/teams/${team.id}`)}
-                style={{ cursor: 'pointer' }}
-                className='table-row-clickable'
-              >
-                <td>{index + 4}</td>
-                <td>
-                  <div className='d-flex align-items-center gap-2'>
-                    <img 
-                      src={team.logo} 
-                      alt={team.name} 
-                      width={130}
-                      className='team-logo'
-                    />
-                  </div>
-                </td>
-                <td>
-                  <div className='d-flex flex-row'>
-                    <div className='d-flex align-items-center gap-2 col-6'>
-                      <img 
-                        src={team.drivers[0].image} 
-                        alt={team.drivers[0].name} 
-                        width={80}
-                        className='driver-thumb'
-                      />
-                      {team.drivers[0].name}
-                    </div>
-                    <div className='d-flex align-items-center gap-2 col-6'>
-                      <img 
-                        src={team.drivers[1].image} 
-                        alt={team.drivers[1].name} 
-                        width={80}
-                        className='driver-thumb'
-                      />
-                      {team.drivers[1].name}
-                    </div>
-                  </div>
-                </td>
-                <td>{team.season_points}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </>
-  )
-
-  const renderLastRace = () => (
-    <div className='container w-100'>
-      <h3>Resultados de la última carrera</h3>
-      <p>Contenido de última carrera por implementar</p>
+            <div className="points-badge">{team.season_points} pts</div>
+          </div>
+        </Link>
+      ))}
     </div>
-  )
+
+    <div className="container w-100 overflow-none mt-4">
+      <table className="table table-hover w-100">
+        <thead className="table-dark">
+          <tr>
+            <th className="fw-light">Pos</th>
+            <th className="fw-light">Team</th>
+            <th className="fw-light">Points</th>
+          </tr>
+        </thead>
+        <tbody>
+          {tableTeams.map((team, index) => (
+            <tr
+              key={generateKey('team-row', index)}
+              onClick={() => navigate(`/teams/${team.id}`)}
+              style={{ cursor: 'pointer' }}
+              className="table-row-clickable"
+            >
+              <td>{index + 4}</td>
+              <td>
+                <div className="d-flex align-items-center justify-content-evenly">
+                  <img src={team.logo} alt={team.name} className="img-fluid team-logo" style={{ maxWidth: '130px' }} />
+                  <span>{team.name}</span>
+                </div>
+              </td>
+              <td>{team.season_points}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+  </>
+);
+
 
   const getActiveContent = () => {
     if (loading) return <p className='text-center'>Cargando...</p>
@@ -214,46 +159,40 @@ function Standings() {
     switch (activeTab) {
       case 'drivers': return renderDriversStandings()
       case 'teams': return renderTeamsStandings()
-      case 'lastRace': return renderLastRace()
       default: return renderDriversStandings()
     }
   }
 
   return (
-    <div className="container-fluid bg-light">
-      <div className='container d-flex justify-content-center flex-column align-items-center p-3 gap-5'>
-        <div className="d-flex justify-content-evenly w-100 m-negative">
-          <button 
-            type="button" 
-            className={`btn ${activeTab === 'drivers' ? 'btn-danger' : 'btn-outline-danger'}`}
-            onClick={() => setActiveTab('drivers')}
-          >
-            Campeonato de Pilotos
-          </button>
-          <button 
-            type="button" 
-            className={`btn ${activeTab === 'teams' ? 'btn-danger' : 'btn-outline-danger'}`}
-            onClick={() => setActiveTab('teams')}
-          >
-            Campeonato de equipos
-          </button>
-          {/* <button 
-            type="button" 
-            className={`btn ${activeTab === 'lastRace' ? 'btn-danger' : 'btn-outline-danger'}`}
-            onClick={() => setActiveTab('lastRace')}
-            disabled
-          >
-            Última carrera
-          </button> */}
-        </div>
-
-        <div className='container d-flex justify-content-center flex-column align-items-center gap-3'>
-          {getActiveContent()}
-        </div>
-
-        {/* <button type="button" className="btn btn-outline-secondary">Ver más información</button> */}
-      </div>
+<div className="container-fluid bg-light">
+  <div className="container d-flex justify-content-center flex-column align-items-center p-3 gap-5">
+    
+    {/* Botones tabs responsivos */}
+    <div className="d-flex flex-column flex-md-row justify-content-center align-items-center w-100 gap-3">
+      <button 
+        type="button" 
+        className={`btn w-100 w-md-auto ${activeTab === 'drivers' ? 'btn-danger' : 'btn-outline-danger'}`}
+        onClick={() => setActiveTab('drivers')}
+      >
+        Campeonato de Pilotos
+      </button>
+      <button 
+        type="button" 
+        className={`btn w-100 w-md-auto ${activeTab === 'teams' ? 'btn-danger' : 'btn-outline-danger'}`}
+        onClick={() => setActiveTab('teams')}
+      >
+        Campeonato de Equipos
+      </button>
     </div>
+
+    {/* Contenido dinámico responsivo */}
+    <div className="container d-flex justify-content-center flex-column align-items-center gap-3">
+      {getActiveContent()}
+    </div>
+
+  </div>
+</div>
+
   )
 }
 

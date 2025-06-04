@@ -1,4 +1,5 @@
-import { React, useEffect, useState } from "react";
+import './CarouselSection.css';
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -19,78 +20,73 @@ const CarouselSection = () => {
     };
     fetchData();
   }, []);
-  
 
   const settings = {
     dots: true,
     infinite: true,
-    speed: 300,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    speed: 500,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 6750,
     adaptiveHeight: false,
-    
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1200,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
-          infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 992,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
-          initialSlide: 2,
+          dots: false,
         },
       },
       {
-        breakpoint: 576,
+        breakpoint: 668,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          dots: false,
         },
       },
     ],
   };
 
   if (loading) {
-    return <div className="text-center">Cargando...</div>;
+    return (
+      <div className="container my-5">
+        <h1 className="text-center fw-bold">Calendario F1 2025</h1>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: "450px" }} >
+          <div className="spinner-border text-danger" role="status">
+            <span className="visually-hidden">Cargando...</span>
+          </div>
+        </div>
+      </div>
+    );
   }
-  
+
   return (
     <div className="container my-5">
-      <h1 className="text-center fw-bold">Calendario F1 2025</h1>
-      <div className="">
-        <Slider {...settings}>
-          {races.map((gp, index) => (
-            <div key={index} className="slide-item">
-              <div className="card d-flex flex-column mx-2" style={{ height: '450px' }}>
-                <img src={gp.countryFlag} alt={`Bandera de ${gp.countryName}`} className="card-img-top" />
-                <div className="card-body text-center bg-light d-flex flex-column justify-content-between">
-                  <h4>{translateCountry(gp.countryName)}</h4>
-                  <h6 className="text-center fs-6">{gp.gpName}</h6>
-                  <div className="text-center">
-                    <span>{gp.gpDate}</span>
-                  </div>
-                  <Link
-                    to={`/circuits/${gp.circuit}`}
-                    className="text-decoration-none"
-                  >
-                    <span className="btn btn-primary mt-2">Ver Gran Premio</span>
-                  </Link>
-                  
-                </div>
+      <h1 className="text-center fw-bold mb-4">Calendario F1 2025</h1>
+      <Slider {...settings}>
+        {races.map((gp) => (
+          <div key={gp.circuit} className="px-2">
+            <div className="card d-flex flex-column mx-2" style={{ height: "400px" }} >
+              <img src={gp.countryFlag} alt={`Bandera de ${gp.countryName}`} className="card-img-top" style={{ objectFit: "cover", height: "auto" }} />
+              <div className="card-body d-flex flex-column bg-light text-center">
+                <h4 className="mb-2">{translateCountry(gp.countryName)}</h4>
+                <h6 className="fs-6 mb-3">{gp.gpName}</h6>
+                <div className="mb-3">{gp.gpDate}</div>
+                <Link to={`/circuits/${gp.circuit}`} className="btn btn-primary mt-auto" > Ver Gran Premio </Link>
               </div>
             </div>
-          ))}
-        </Slider>
-      </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };
