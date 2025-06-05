@@ -70,9 +70,9 @@ function Standings() {
           <thead className="table-dark">
             <tr>
               <th className="fw-light">Pos</th>
-              <th className="fw-light">Driver</th>
-              <th className="fw-light">Team</th>
-              <th className="fw-light">Points</th>
+              <th className="fw-light">Piloto</th>
+              <th className="fw-light">Equipo</th>
+              <th className="fw-light">Puntos</th>
             </tr>
           </thead>
           <tbody>
@@ -122,8 +122,8 @@ const renderTeamsStandings = () => (
         <thead className="table-dark">
           <tr>
             <th className="fw-light">Pos</th>
-            <th className="fw-light">Team</th>
-            <th className="fw-light">Points</th>
+            <th className="fw-light text-center">Equipo</th>
+            <th className="fw-light">Puntos</th>
           </tr>
         </thead>
         <tbody>
