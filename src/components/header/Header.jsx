@@ -59,11 +59,6 @@ function Header() {
               Comparar Pilotos
             </NavLink>
           </li>
-          <li className="nav-item">
-            <NavLink to="/strats" className={({ isActive }) => isActive ? "nav-link text-danger-emphasis" : "nav-link text-white"}>
-              Estrategias y Telemetría
-            </NavLink>
-          </li>
         </ul>
       </div>
     </nav>

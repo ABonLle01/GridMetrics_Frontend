@@ -201,7 +201,7 @@ function GeneralData({ dataType, option }) {
                     <td>{result.raceName}</td>
                     <td>{formatDate(result.date)}</td>
                     <td>{getTeamByDriver(data.driverId_short)}</td>
-                    <td>{result.position}</td>
+                    <td>{result.finalPosition}</td>
                     <td>{result.points}</td>
                     <td>{translateState(result.status)}</td>
                   </tr>

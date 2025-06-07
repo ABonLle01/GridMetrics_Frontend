@@ -61,9 +61,7 @@ const CarouselSection = () => {
       <div className="container my-5">
         <h1 className="text-center fw-bold">Calendario F1 2025</h1>
         <div className="d-flex justify-content-center align-items-center" style={{ height: "450px" }} >
-          <div className="spinner-border text-danger" role="status">
-            <span className="visually-hidden">Cargando...</span>
-          </div>
+          <div className="spinner-border text-danger" role="status"></div>
         </div>
       </div>
     );

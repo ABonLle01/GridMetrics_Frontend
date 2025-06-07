@@ -153,7 +153,16 @@ const renderTeamsStandings = () => (
 
 
   const getActiveContent = () => {
-    if (loading) return <p className='text-center'>Cargando...</p>
+    if (loading) {
+      return (
+        <div className="container my-5">
+          <h1 className="text-center fw-bold">Calendario F1 2025</h1>
+          <div className="d-flex justify-content-center align-items-center" style={{ height: "450px" }} >
+            <div className="spinner-border text-danger" role="status"></div>
+          </div>
+        </div>
+      );
+    }
     if (error) return <p>{error}</p>
 
     switch (activeTab) {
@@ -167,7 +176,6 @@ const renderTeamsStandings = () => (
 <div className="container-fluid bg-light">
   <div className="container d-flex justify-content-center flex-column align-items-center p-3 gap-5">
     
-    {/* Botones tabs responsivos */}
     <div className="d-flex flex-column flex-md-row justify-content-center align-items-center w-100 gap-3">
       <button 
         type="button" 
@@ -185,7 +193,6 @@ const renderTeamsStandings = () => (
       </button>
     </div>
 
-    {/* Contenido dinámico responsivo */}
     <div className="container d-flex justify-content-center flex-column align-items-center gap-3">
       {getActiveContent()}
     </div>

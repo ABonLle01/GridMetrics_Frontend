@@ -57,8 +57,6 @@ function GPCircuit({ circuit }) {
             </div>
           </div>
         </div>
-        {/* <a href="#" rel="noopener noreferrer">Estadísticas del circuito</a> */}
-
       </div>
 
       <section>
