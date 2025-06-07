@@ -169,7 +169,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
         {!driverData && (
-        <Form.Group className="mb-2">
+        <Form.Group className="mb-2 text-primary">
             <Form.Label>ID único (ej: lewis_hamilton)</Form.Label>
             <Form.Control
             type="text"
@@ -181,7 +181,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
         </Form.Group>
         )}
           {/* Nombre */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Nombre</Form.Label>
             <Form.Control
               type="text"
@@ -191,7 +191,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               required
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Apellido</Form.Label>
             <Form.Control
               type="text"
@@ -203,7 +203,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Biografía */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Biografía</Form.Label>
             <Form.Control
               as="textarea"
@@ -215,7 +215,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Nacionalidad */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>País</Form.Label>
             <Form.Control
               type="text"
@@ -224,7 +224,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Bandera (URL)</Form.Label>
             <Form.Control
               type="text"
@@ -235,7 +235,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Imagen perfil */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Imagen de perfil</Form.Label>
             <Form.Control
               type="text"
@@ -246,7 +246,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Datos de nacimiento */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Fecha de nacimiento</Form.Label>
             <Form.Control
               type="date"
@@ -255,7 +255,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Lugar de nacimiento</Form.Label>
             <Form.Control
               type="text"
@@ -266,7 +266,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Stats */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Campeonatos</Form.Label>
             <Form.Control
               type="number"
@@ -275,7 +275,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Podios</Form.Label>
             <Form.Control
               type="number"
@@ -284,7 +284,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Grandes Premios</Form.Label>
             <Form.Control
               type="number"
@@ -293,7 +293,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Mejor posición en carrera</Form.Label>
             <Form.Control
               type="number"
@@ -302,7 +302,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Mejor posición en parrilla</Form.Label>
             <Form.Control
               type="number"
@@ -311,7 +311,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Puntos totales</Form.Label>
             <Form.Control
               type="number"
@@ -320,7 +320,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Puntos en temporada</Form.Label>
             <Form.Control
               type="number"
@@ -331,7 +331,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Carrera */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Equipos (separados por coma)</Form.Label>
             <Form.Control
               type="text"
@@ -340,7 +340,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Primera carrera</Form.Label>
             <Form.Control
               type="text"
@@ -349,7 +349,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Primera victoria</Form.Label>
             <Form.Control
               type="text"
@@ -358,7 +358,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Última victoria</Form.Label>
             <Form.Control
               type="text"
@@ -369,7 +369,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Imágenes */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Imagen 1</Form.Label>
             <Form.Control
               type="text"
@@ -378,7 +378,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Imagen 2</Form.Label>
             <Form.Control
               type="text"
@@ -387,7 +387,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Imagen 3</Form.Label>
             <Form.Control
               type="text"
@@ -398,7 +398,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
           </Form.Group>
 
           {/* Equipo y número */}
-          <Form.Group className="mb-2">
+          <Form.Group className="mb-2 text-primary">
             <Form.Label>Equipo</Form.Label>
             <Form.Control
               type="text"
@@ -407,7 +407,7 @@ function DriverForm({ show, onHide, driverData, onDriverUpdated }) {
               onChange={handleChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3">
+          <Form.Group className="mb-3 text-primary">
             <Form.Label>Número de coche</Form.Label>
             <Form.Control
               type="number"

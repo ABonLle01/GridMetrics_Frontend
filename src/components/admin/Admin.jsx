@@ -59,9 +59,14 @@ function Admin() {
               />
             </Form.Group>
 
+            <div className="d-flex justify-content-between">
             <Button variant="primary" type="submit">
               Iniciar sesión
             </Button>
+            <Button variant="secondary" onClick={() => navigate('/')}>
+              Cancelar
+            </Button>
+            </div>
           </Form>
         </Modal.Body>
       </Modal>
