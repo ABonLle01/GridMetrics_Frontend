@@ -9,10 +9,8 @@ import TeamDetail from './components/teams/details/TeamDetails'
 import Schedule from './components/schedule/Schedule'
 import GPSchedule from './components/schedule/details/GPSchedule'
 import Compare from './components/compare/Compare'
-import Strats from './components/strats/Strats'
 import Layout from './components/Layout'
 import Admin from './components/admin/Admin'
-import DriversList from './components/admin/drivers/DriversList'
 
 function App() {
   return (
@@ -28,7 +26,6 @@ function App() {
           <Route path="schedule" element={<Schedule />} />
           <Route path="circuits/:id" element={<GPSchedule />} />
           <Route path="compare" element={<Compare />} />
-          <Route path="strats" element={<Strats />} />
           <Route path="admin" element={<Admin/>} />
         </Route>
       </Routes>
